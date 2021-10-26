@@ -46,7 +46,7 @@ def payments(request):
         product_variation = cart_item.variations.all()
         orderproduct = OrderProduct.objects.get(id=orderproduct.id)
         orderproduct.variations.set(product_variation)
-        orderproduct.save()  
+        orderproduct.save()
 
 
         # Reduce the quantity of the sold products
@@ -68,11 +68,11 @@ def payments(request):
     send_email.send()
 
     # Send order number and transaction id back to sendData method via JsonResponse
-    '''data = {
+    data = {
         'order_number': order.order_number,
         'transID': payment.payment_id,
     }
-    return JsonResponse(data)'''
+    return JsonResponse(data)
 
 def place_order(request, total=0, quantity=0,):
     current_user = request.user
@@ -157,6 +157,5 @@ def order_complete(request):
             'subtotal': subtotal,
         }
         return render(request, 'orders/order_complete.html', context)
-
     except (Payment.DoesNotExist, Order.DoesNotExist):
         return redirect('home')
