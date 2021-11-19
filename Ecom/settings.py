@@ -28,7 +28,8 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=True, cast=bool)
 
-ALLOWED_HOSTS = ['eco-dj.eba-musm6s2m.us-west-2.elasticbeanstalk.com']
+ALLOWED_HOSTS = ['eco-dj.eba-musm6s2m.us-west-2.elasticbeanstalk.com', 
+'0.0.0.0']
 
 
 # Application definition
@@ -94,7 +95,7 @@ AUTH_USER_MODEL = 'accounts.Account'
 
 
 # Database Configuration
-import os
+
 if 'RDS_DB_NAME' in os.environ:
     DATABASES = {
         'default': {
